@@ -1,1 +1,202 @@
-#Readme file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zack Vang • Portfolio</title>
+  <meta name="description" content="Zack Vang – Cybersecurity, Software, and Homelab projects" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card: #101624;
+      --muted: #a6b0c3;
+      --text: #e7ecf5;
+      --accent: #7aa2ff;
+      --accent-2: #57e39b;
+      --ring: rgba(122,162,255,0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 80% -10%, #142035 0%, transparent 60%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header.nav {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: saturate(160%) blur(6px);
+      background: linear-gradient(180deg, rgba(11,15,23,0.8), rgba(11,15,23,0.2));
+      border-bottom: 1px solid rgba(122,162,255,0.12);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+    .brand { font-weight: 700; letter-spacing: 0.3px; }
+    .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .nav-links a { padding: 6px 10px; border-radius: 10px; }
+    .nav-links a:hover { background: rgba(122,162,255,0.08); text-decoration: none; }
+
+    .hero { padding: 56px 0 24px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    @media (max-width: 900px){ .hero { grid-template-columns: 1fr; } }
+    .chip { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(87,227,155,0.12); color: #baf3d3; font-size: 12px; border:1px solid rgba(87,227,155,0.28); }
+    .headline { font-size: clamp(28px, 4vw, 42px); line-height: 1.15; margin: 12px 0 8px; }
+    .subhead { color: var(--muted); margin: 0 0 20px; }
+    .cta-row { display:flex; gap:14px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; font-weight:600; border:1px solid rgba(122,162,255,0.3); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), #9ad1ff); color:#0b0f17; border:none; }
+    .btn.ghost { background: rgba(122,162,255,0.08); color: var(--text); }
+
+    .card { background: linear-gradient(180deg, rgba(16,22,36,0.9), rgba(16,22,36,0.7)); border:1px solid rgba(122,162,255,0.14); border-radius: 18px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    .grid { display:grid; gap:18px; }
+    .grid.projects { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 1000px){ .grid.projects { grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 640px){ .grid.projects { grid-template-columns: 1fr; } }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0 0 10px; color: var(--muted); }
+    .tagrow { display:flex; gap:8px; flex-wrap: wrap; margin-top: 10px; }
+    .tag { font-size: 12px; padding: 4px 8px; border-radius: 999px; background: rgba(122,162,255,0.12); color: #cfe0ff; border: 1px solid rgba(122,162,255,0.28); }
+
+    section { padding: 28px 0; }
+    section h2 { font-size: 22px; margin: 0 0 12px; letter-spacing: 0.2px; }
+    .twocol { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    @media (max-width: 900px){ .twocol { grid-template-columns: 1fr; } }
+
+    footer { border-top: 1px solid rgba(122,162,255,0.12); color: var(--muted); padding: 32px 0 40px; margin-top: 40px; }
+    .footgrid { display:grid; gap: 18px; grid-template-columns: 2fr 1fr; }
+    @media (max-width: 900px){ .footgrid { grid-template-columns: 1fr; } }
+
+    .focus {
+      outline: none;
+      box-shadow: 0 0 0 0px var(--ring);
+      transition: box-shadow .18s ease;
+    }
+    .focus:focus-visible { box-shadow: 0 0 0 6px var(--ring); }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Zack Vang</div>
+      <nav class="nav-links">
+        <a class="focus" href="#projects">Projects</a>
+        <a class="focus" href="#certs">Badges & Certs</a>
+        <a class="focus" href="#about">About</a>
+        <a class="focus" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="chip">Cybersecurity • C++/Python • Homelab</span>
+        <h1 class="headline">Building secure systems, writing clean code, and documenting the journey.</h1>
+        <p class="subhead">I’m Zack — CS @ UMKC, USMC veteran. I like hardening networks, writing C++/Python, and running services in my homelab (Docker, nginx, VLANs). This is a hub for my projects, write‑ups, and certs.</p>
+        <div class="cta-row">
+          <a class="btn primary focus" href="#projects">See projects</a>
+          <a class="btn ghost focus" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn ghost focus" href="#contact">Resume</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Highlights</h3>
+        <ul>
+          <li>CompTIA A+ (in hand); Studying Sec+/Net+.</li>
+          <li>Homelab with Docker, reverse proxy, VLAN segmentation.</li>
+          <li>C++ coursework: DS & OOP; Python scripts & tooling.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid projects">
+        <article class="card">
+          <h3>Homelab: Reverse Proxy + Containers</h3>
+          <p>nginx reverse proxy in front of multiple services (e.g., Jellyfin, Portainer). Deployed on Linux box; TLS, DNS, and backups configured.</p>
+          <div class="tagrow">
+            <span class="tag">Linux</span>
+            <span class="tag">nginx</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Networking</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>C++ Matrix Toolkit</h3>
+          <p>Reads matrices from files, performs validation, algebra ops, and relation checks (reflexive/symmetric). Emphasis on clarity & tests.</p>
+          <div class="tagrow">
+            <span class="tag">C++</span>
+            <span class="tag">Unit Tests</span>
+            <span class="tag">File I/O</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Python Quiz Engine</h3>
+          <p>Multiple‑choice engine with randomization, input handling, and replayability. CLI UI with clean separation of logic & data.</p>
+          <div class="tagrow">
+            <span class="tag">Python</span>
+            <span class="tag">CLI</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="certs" class="twocol">
+      <div>
+        <h2>Badges & Certifications</h2>
+        <div class="card">
+          <h3>TryHackMe</h3>
+          <p>Live badge embed from my TryHackMe profile.</p>
+          <!-- Paste your TryHackMe embed snippet below (from your THM profile > Share > Embed). -->
+          <!-- Example placeholder: <script src="https://tryhackme.com/badge/####"></script> -->
+          <div id="tryhackme-badge" style="margin-top: 8px;"></div>
+        </div>
+        <div class="card" style="margin-top: 12px;">
+          <h3>CompTIA</h3>
+          <p>A+ certified; Security+ and Network+ in progress.</p>
+        </div>
+      </div>
+      <div>
+        <h2>About</h2>
+        <div id="about" class="card">
+          <p>USMC vet pivoting into cybersecurity and infrastructure. I like building things end‑to‑end: from code to deployment to observability. When I’m not hacking on lab gear, I’m learning, lifting, and tinkering with cars.</p>
+          <p style="margin-top: 8px; color: var(--muted);">Focus areas: threat modeling, web security, Linux hardening, and reliable automation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid">
+        <div class="card">
+          <p><strong>Email:</strong> <a href="mailto:zack@example.com">zack@example.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yourhandle" target="_blank" rel="noopener">linkedin.com/in/yourhandle</a></p>
+          <p><strong>Resume:</strong> <a href="#">Download PDF</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footgrid">
+        <div>© <span id="year"></span> Zack Vang. Built with HTML/CSS. Hosted on GitHub Pages.</div>
+        <div style="text-align:right;">
+          <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top ↑</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // year stamp
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
